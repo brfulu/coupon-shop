@@ -6,26 +6,12 @@ import java.util.List;
 
 public class CouponService {
 
-    public List<CouponDto> getCoupons() {
-        List<CouponDto> couponDtos = new ArrayList<>();
-        List<Coupon> coupons = CouponRepository.getCoupons();
-
-        for (Coupon coupon : coupons) {
-            CouponDto couponDto = new CouponDto(coupon);
-            couponDtos.add(couponDto);
-        }
-
-        return couponDtos;
+    public List<Coupon> getCoupons() {
+        return CouponRepository.getCoupons();
     }
 
-    public CouponDto addCoupon(CouponDto couponDto) {
-        Coupon coupon = new Coupon(couponDto);
-
-        coupon = CouponRepository.addCoupon(coupon);
-        couponDto.setId(coupon.getId());
-        couponDto.setShop(coupon.getShop().getName());
-
-        return couponDto;
+    public void addCoupon(Coupon coupon) {
+        CouponRepository.addCoupon(coupon);
     }
 
     public boolean deleteCoupon(long id) {

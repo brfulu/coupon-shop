@@ -2,34 +2,19 @@ package io.fulu.couponshop.coupon;
 
 import io.fulu.couponshop.shop.Shop;
 
+import java.util.Date;
+
 public class Coupon {
     private long id;
-    private String product;
-    private double discountedPrice;
-    private double originalPrice;
     private Shop shop;
-
-    public Coupon(CouponDto couponDto) {
-        this.product = couponDto.getProduct();
-        this.discountedPrice = couponDto.getDiscountedPrice();
-        this.originalPrice = couponDto.getOriginalPrice();
-        this.shop = new Shop();
-        this.shop.setName(couponDto.getShop());
-    }
-
-    public Coupon(CouponRecord couponRecord) {
-        this.id = couponRecord.getId();
-        this.product = couponRecord.getProduct();
-        this.discountedPrice = couponRecord.getDiscountedPrice();
-        this.originalPrice = couponRecord.getOriginalPrice();
-    }
+    private String product;
+    private double discountPrice;
+    private double originalPrice;
+    private Date validFrom;
+    private Date validTo;
 
     public Coupon() {
 
-    }
-
-    public Coupon(long id) {
-        this.id = id;
     }
 
     public long getId() {
@@ -48,12 +33,12 @@ public class Coupon {
         this.product = product;
     }
 
-    public double getDiscountedPrice() {
-        return discountedPrice;
+    public double getDiscountPrice() {
+        return discountPrice;
     }
 
-    public void setDiscountedPrice(double discountedPrice) {
-        this.discountedPrice = discountedPrice;
+    public void setDiscountPrice(double discountPrice) {
+        this.discountPrice = discountPrice;
     }
 
     public double getOriginalPrice() {
@@ -70,5 +55,21 @@ public class Coupon {
 
     public void setShop(Shop shop) {
         this.shop = shop;
+    }
+
+    public Date getValidFrom() {
+        return validFrom;
+    }
+
+    public void setValidFrom(Date validFrom) {
+        this.validFrom = validFrom;
+    }
+
+    public Date getValidTo() {
+        return validTo;
+    }
+
+    public void setValidTo(Date validTo) {
+        this.validTo = validTo;
     }
 }

@@ -16,7 +16,7 @@ public class ShopController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ShopDto> getShops() {
+    public List<Shop> getShops() {
         return shopService.getShops();
     }
 

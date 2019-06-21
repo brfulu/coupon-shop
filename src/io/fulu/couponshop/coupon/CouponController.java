@@ -1,5 +1,7 @@
 package io.fulu.couponshop.coupon;
 
+import io.fulu.couponshop.database.DBConnection;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -14,15 +16,16 @@ public class CouponController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<CouponDto> getCoupons() {
+    public List<Coupon> getCoupons() {
+        DBConnection.getConnnection();
         return couponService.getCoupons();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public CouponDto addCoupon(CouponDto couponDto) {
-        return couponService.addCoupon(couponDto);
+    public void addCoupon(Coupon couponDto) {
+        couponService.addCoupon(couponDto);
     }
 
     @DELETE
