@@ -1,6 +1,12 @@
 package io.fulu.couponshop;
 
+import io.fulu.couponshop.coupon.Coupon;
+import io.fulu.couponshop.coupon.CouponService;
 import io.fulu.couponshop.database.DBConnection;
+import io.fulu.couponshop.shop.Shop;
+import io.fulu.couponshop.shop.ShopService;
+import io.fulu.couponshop.user.User;
+import io.fulu.couponshop.user.UserService;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import javax.ws.rs.ApplicationPath;
@@ -14,7 +20,7 @@ import java.util.Date;
 public class RestApp extends ResourceConfig {
 
     public RestApp() {
-        packages("io.fulu.couponshop.coupon", "io.fulu.couponshop.shop");
+        packages("io.fulu.couponshop.coupon", "io.fulu.couponshop.shop", "io.fulu.couponshop.user");
         initDB();
     }
 
@@ -28,10 +34,23 @@ public class RestApp extends ResourceConfig {
             createCouponsTable();
             createUsersTable();
 
-            addShop("Maxi");
-            addShop("Lidl");
-            addCoupons(1, "Riza", 105.4, 230, new Date(), new Date());
-            addUsers("Branko", "Fulurija", "ADMIN", "fulu", "sifra");
+            ShopService shopService = new ShopService();
+            Shop maxi = new Shop("Maxi");
+            maxi = shopService.addShop(maxi);
+            Shop lidl = new Shop("Lidl");
+            lidl = shopService.addShop(lidl);
+
+            CouponService couponService = new CouponService();
+            Coupon coupon1 = new Coupon(maxi, "Riza", 105.4f, 230f, new Date(), new Date());
+            couponService.addCoupon(coupon1);
+            Coupon coupon2 = new Coupon(lidl, "Pile", 234.4f, 350f, new Date(), new Date());
+            couponService.addCoupon(coupon2);
+
+            UserService userService = new UserService();
+            User admin = new User("Branko", "Fulurija", "ADMIN", "fulu", "sifra");
+            userService.register(admin);
+            User operator = new User("Ana", "Joksimovic", "OPERATOR", "ana", "abc");
+            userService.register(operator);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -96,35 +115,35 @@ public class RestApp extends ResourceConfig {
         stmt.close();
     }
 
-    private void addShop(String name) throws SQLException {
-        Connection conn = DBConnection.getConnnection();
-        Statement stmt = conn.createStatement();
-        stmt.execute("INSERT INTO Shops (name) VALUES('" + name + "')");
-    }
+//    private void addShop(String name) throws SQLException {
+//        Connection conn = DBConnection.getConnnection();
+//        Statement stmt = conn.createStatement();
+//        stmt.execute("INSERT INTO Shops (name) VALUES('" + name + "')");
+//    }
+//
+//    private void addCoupons(int shopId, String product, double discountPrice,
+//                            double originalPrice, Date validFrom, Date validTo) throws SQLException {
+//        Connection conn = DBConnection.getConnnection();
+//        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Coupons"
+//                + " (shop_id, product, discount_price, original_price, valid_from, valid_to) "
+//                + " VALUES(?, ?, ?, ?, ?, ?)");
+//
+//        stmt.setInt(1, shopId);
+//        stmt.setString(2, product);
+//        stmt.setFloat(3, (float) discountPrice);
+//        stmt.setFloat(4, (float) originalPrice);
+//        stmt.setDate(5, new java.sql.Date(validFrom.getTime()));
+//        stmt.setDate(6, new java.sql.Date(validTo.getTime()));
+//
+//        stmt.execute();
+//        stmt.close();
+//    }
 
-    private void addCoupons(int shopId, String product, double discountPrice,
-                            double originalPrice, Date validFrom, Date validTo) throws SQLException {
-        Connection conn = DBConnection.getConnnection();
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Coupons"
-                + " (shop_id, product, discount_price, original_price, valid_from, valid_to) "
-                + " VALUES(?, ?, ?, ?, ?, ?)");
-
-        stmt.setInt(1, shopId);
-        stmt.setString(2, product);
-        stmt.setFloat(3, (float) discountPrice);
-        stmt.setFloat(4, (float) originalPrice);
-        stmt.setDate(5, new java.sql.Date(validFrom.getTime()));
-        stmt.setDate(6, new java.sql.Date(validTo.getTime()));
-
-        stmt.execute();
-        stmt.close();
-    }
-
-    private void addUsers(String firstName, String lastName, String role, String username, String password) throws SQLException {
-        Connection conn = DBConnection.getConnnection();
-        Statement stmt = conn.createStatement();
-        stmt.execute("INSERT INTO Users (first_name, last_name, role, username, password)"
-                + " VALUES('" + firstName + "','" + lastName + "','" + role + "','" + username + "','" + password + "')");
-        stmt.close();
-    }
+//    private void addUsers(String firstName, String lastName, String role, String username, String password) throws SQLException {
+//        Connection conn = DBConnection.getConnnection();
+//        Statement stmt = conn.createStatement();
+//        stmt.execute("INSERT INTO Users (first_name, last_name, role, username, password)"
+//                + " VALUES('" + firstName + "','" + lastName + "','" + role + "','" + username + "','" + password + "')");
+//        stmt.close();
+//    }
 }

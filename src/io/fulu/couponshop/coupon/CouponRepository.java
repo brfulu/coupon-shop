@@ -1,11 +1,9 @@
 package io.fulu.couponshop.coupon;
 
-import com.mysql.cj.xdevapi.Result;
 import io.fulu.couponshop.database.DBConnection;
-import io.fulu.couponshop.shop.Shop;
+import io.fulu.couponshop.shop.ShopEntity;
 import io.fulu.couponshop.shop.ShopRepository;
 
-import javax.validation.constraints.Null;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,13 +11,13 @@ import java.util.List;
 
 public class CouponRepository {
 
-    public synchronized static List<Coupon> getCoupons() {
-        List<Coupon> coupons = new ArrayList<>();
+    public synchronized static List<CouponEntity> getCoupons() {
+        List<CouponEntity> coupons = new ArrayList<>();
         try {
             Connection conn = DBConnection.getConnnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Coupons");
-            coupons = convertToCouponsList(rs);
+            coupons = convertToCouponList(rs);
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -27,13 +25,13 @@ public class CouponRepository {
         return coupons;
     }
 
-    public synchronized static Coupon addCoupon(Coupon coupon) {
+    public synchronized static CouponEntity addCoupon(CouponEntity coupon) {
         try {
             Connection conn = DBConnection.getConnnection();
             String sql = "INSERT INTO Coupons (shop_id, product, discount_price, original_price, valid_from, valid_to)"
                     + " VALUES(?, ?, ?, ?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, coupon.getShop().getId());
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, coupon.getShop().getId());
             stmt.setString(2, coupon.getProduct());
             stmt.setFloat(3, coupon.getDiscountPrice());
             stmt.setFloat(4, coupon.getOriginalPrice());
@@ -43,7 +41,19 @@ public class CouponRepository {
             } catch (NullPointerException e) {
                 stmt.setDate(6, null);
             }
-            stmt.execute();
+
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating coupon failed, no rows affected.");
+            }
+
+            ResultSet generatedKeys = stmt.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                coupon.setId(generatedKeys.getLong(1));
+            } else {
+                throw new SQLException("Creating coupon failed, no ID obtained.");
+            }
+
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,13 +74,13 @@ public class CouponRepository {
         return affectedRows == 1;
     }
 
-    public static List<Coupon> getCouponsByShopId(int shopId) {
-        List<Coupon> coupons = new ArrayList<>();
+    public static List<CouponEntity> getCouponsByShopId(int shopId) {
+        List<CouponEntity> coupons = new ArrayList<>();
         try {
             Connection conn = DBConnection.getConnnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Coupons WHERE shop_id = " + shopId);
-            coupons = convertToCouponsList(rs);
+            coupons = convertToCouponList(rs);
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,8 +88,8 @@ public class CouponRepository {
         return coupons;
     }
 
-    private static List<Coupon> convertToCouponsList(ResultSet rs) throws SQLException {
-        List<Coupon> coupons = new ArrayList<>();
+    private static List<CouponEntity> convertToCouponList(ResultSet rs) throws SQLException {
+        List<CouponEntity> coupons = new ArrayList<>();
         while (rs.next()) {
             int id = rs.getInt("id");
             int shopId = rs.getInt("shop_id");
@@ -89,9 +99,9 @@ public class CouponRepository {
             Date validFrom = rs.getDate("valid_from");
             Date validTo = rs.getDate("valid_to");
 
-            Shop shop = ShopRepository.getShopById(shopId);
+            ShopEntity shop = ShopRepository.getShopById(shopId);
 
-            coupons.add(new Coupon(id, shop, product, discountPrice, originalPrice, validFrom, validTo));
+            coupons.add(new CouponEntity(id, shop, product, discountPrice, originalPrice, validFrom, validTo));
         }
         return coupons;
     }

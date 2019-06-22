@@ -1,20 +1,14 @@
 package io.fulu.couponshop.shop;
 
-import java.io.Serializable;
-
-public class Shop implements Serializable {
+public class ShopEntity {
     private long id;
     private String name;
 
-    public Shop() {
+    public ShopEntity() {
 
     }
 
-    public Shop(String name) {
-        this.name = name;
-    }
-
-    public Shop(int id, String name) {
+    public ShopEntity(long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -23,12 +17,12 @@ public class Shop implements Serializable {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {

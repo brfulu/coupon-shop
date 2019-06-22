@@ -1,18 +1,19 @@
 package io.fulu.couponshop.user;
 
-public class User {
+public class UserEntity {
     private long id;
     private String firstName;
     private String lastName;
-    private String role;
+    private UserRole role;
     private String username;
     private String password;
 
-    public User() {
+    public UserEntity() {
 
     }
 
-    public User(String firstName, String lastName, String role, String username, String password) {
+    public UserEntity(long id, String firstName, String lastName, UserRole role, String username, String password) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
@@ -44,11 +45,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getRole() {
+    public UserRole getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(UserRole role) {
         this.role = role;
     }
 

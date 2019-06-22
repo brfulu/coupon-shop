@@ -23,8 +23,8 @@ public class ShopController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void addShop(Shop shop) {
-        shopService.addCoupon(shop);
+    public Shop addShop(Shop shop) {
+        return shopService.addShop(shop);
     }
 
     @DELETE

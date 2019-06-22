@@ -30,8 +30,8 @@ public class CouponController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void addCoupon(Coupon coupon) {
-        couponService.addCoupon(coupon);
+    public Coupon addCoupon(Coupon coupon) {
+       return couponService.addCoupon(coupon);
     }
 
     @DELETE

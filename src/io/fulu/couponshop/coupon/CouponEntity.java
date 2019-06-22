@@ -1,34 +1,24 @@
 package io.fulu.couponshop.coupon;
 
 import io.fulu.couponshop.shop.Shop;
+import io.fulu.couponshop.shop.ShopEntity;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Coupon implements Serializable {
+public class CouponEntity {
     private long id;
-    private Shop shop;
+    private ShopEntity shop;
     private String product;
     private float discountPrice;
     private float originalPrice;
-    private Date validTo;
     private Date validFrom;
-    private float discount;
+    private Date validTo;
 
-    public Coupon() {
+    public CouponEntity() {
 
     }
 
-    public Coupon(Shop shop, String product, float discountPrice, float originalPrice, Date validTo, Date validFrom) {
-        this.shop = shop;
-        this.product = product;
-        this.discountPrice = discountPrice;
-        this.originalPrice = originalPrice;
-        this.validTo = validTo;
-        this.validFrom = validFrom;
-    }
-
-    public Coupon(int id, Shop shop, String product, float discountPrice, float originalPrice, Date validFrom, Date validTo) {
+    public CouponEntity(long id, ShopEntity shop, String product, float discountPrice, float originalPrice, Date validFrom, Date validTo) {
         this.id = id;
         this.shop = shop;
         this.product = product;
@@ -44,6 +34,14 @@ public class Coupon implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public ShopEntity getShop() {
+        return shop;
+    }
+
+    public void setShop(ShopEntity shop) {
+        this.shop = shop;
     }
 
     public String getProduct() {
@@ -70,22 +68,6 @@ public class Coupon implements Serializable {
         this.originalPrice = originalPrice;
     }
 
-    public Shop getShop() {
-        return shop;
-    }
-
-    public void setShop(Shop shop) {
-        this.shop = shop;
-    }
-
-    public Date getValidFrom() {
-        return validFrom;
-    }
-
-    public void setValidFrom(Date validFrom) {
-        this.validFrom = validFrom;
-    }
-
     public Date getValidTo() {
         return validTo;
     }
@@ -94,11 +76,11 @@ public class Coupon implements Serializable {
         this.validTo = validTo;
     }
 
-    public float getDiscount() {
-        return discount;
+    public Date getValidFrom() {
+        return validFrom;
     }
 
-    public void setDiscount(float discount) {
-        this.discount = discount;
+    public void setValidFrom(Date validFrom) {
+        this.validFrom = validFrom;
     }
 }
