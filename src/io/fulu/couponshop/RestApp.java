@@ -3,6 +3,7 @@ package io.fulu.couponshop;
 import io.fulu.couponshop.coupon.Coupon;
 import io.fulu.couponshop.coupon.CouponService;
 import io.fulu.couponshop.database.DBConnection;
+import io.fulu.couponshop.filters.CorsFilter;
 import io.fulu.couponshop.shop.Shop;
 import io.fulu.couponshop.shop.ShopService;
 import io.fulu.couponshop.user.User;
@@ -20,7 +21,8 @@ import java.util.Date;
 public class RestApp extends ResourceConfig {
 
     public RestApp() {
-        packages("io.fulu.couponshop.coupon", "io.fulu.couponshop.shop", "io.fulu.couponshop.user");
+        packages("io.fulu.couponshop.coupon", "io.fulu.couponshop.shop", "io.fulu.couponshop.user", "io.fulu.couponshop.security");
+        register(CorsFilter.class);
         initDB();
     }
 

@@ -14,13 +14,13 @@ public class UserService {
         return UserMapper.mapToModel(userEntity);
     }
 
-    public boolean login(User user) {
+    public User login(User user) {
         UserEntity userEntity = UserRepository.getUserByUsername(user.getUsername());
 
         if (userEntity != null && DigestUtils.sha512Hex(user.getPassword()).equals(userEntity.getPassword())) {
-            return true;
+            return UserMapper.mapToModel(userEntity);
         }
 
-        return false;
+        return null;
     }
 }
