@@ -1,19 +1,19 @@
 package io.fulu.couponshop.shop;
 
 public class Shop {
-    private long id;
+    private int id;
     private String name;
 
     public Shop() {
 
     }
 
-    public Shop(long id, String name) {
+    public Shop(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -21,7 +21,7 @@ public class Shop {
         return name;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

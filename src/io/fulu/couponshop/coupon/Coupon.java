@@ -1,27 +1,40 @@
 package io.fulu.couponshop.coupon;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.fulu.couponshop.shop.Shop;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Coupon {
-    private long id;
+    private int id;
     private Shop shop;
     private String product;
-    private double discountPrice;
-    private double originalPrice;
-    private Date validFrom;
+    private float discountPrice;
+    private float originalPrice;
     private Date validTo;
+    private Date validFrom;
 
     public Coupon() {
 
+    }
+
+    public Coupon(int id, Shop shop, String product, float discountPrice, float originalPrice, Date validFrom, Date validTo) {
+        this.id = id;
+        this.shop = shop;
+        this.product = product;
+        this.discountPrice = discountPrice;
+        this.originalPrice = originalPrice;
+        this.validFrom = validFrom;
+        this.validTo = validTo;
     }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -33,19 +46,19 @@ public class Coupon {
         this.product = product;
     }
 
-    public double getDiscountPrice() {
+    public float getDiscountPrice() {
         return discountPrice;
     }
 
-    public void setDiscountPrice(double discountPrice) {
+    public void setDiscountPrice(float discountPrice) {
         this.discountPrice = discountPrice;
     }
 
-    public double getOriginalPrice() {
+    public float getOriginalPrice() {
         return originalPrice;
     }
 
-    public void setOriginalPrice(double originalPrice) {
+    public void setOriginalPrice(float originalPrice) {
         this.originalPrice = originalPrice;
     }
 

@@ -44,6 +44,7 @@ public class RestApp extends ResourceConfig {
 
         Statement stmt = conn.createStatement();
         stmt.execute(sql);
+        stmt.close();
     }
 
     private void createShopsTable() throws SQLException {
@@ -56,6 +57,7 @@ public class RestApp extends ResourceConfig {
 
         Statement stmt = conn.createStatement();
         stmt.execute(sql);
+        stmt.close();
     }
 
     private void createCouponsTable() throws SQLException {
@@ -74,6 +76,7 @@ public class RestApp extends ResourceConfig {
 
         Statement stmt = conn.createStatement();
         stmt.execute(sql);
+        stmt.close();
     }
 
     private void createUsersTable() throws SQLException {
@@ -90,6 +93,7 @@ public class RestApp extends ResourceConfig {
 
         Statement stmt = conn.createStatement();
         stmt.execute(sql);
+        stmt.close();
     }
 
     private void addShop(String name) throws SQLException {
@@ -113,6 +117,7 @@ public class RestApp extends ResourceConfig {
         stmt.setDate(6, new java.sql.Date(validTo.getTime()));
 
         stmt.execute();
+        stmt.close();
     }
 
     private void addUsers(String firstName, String lastName, String role, String username, String password) throws SQLException {
@@ -120,5 +125,6 @@ public class RestApp extends ResourceConfig {
         Statement stmt = conn.createStatement();
         stmt.execute("INSERT INTO Users (first_name, last_name, role, username, password)"
                 + " VALUES('" + firstName + "','" + lastName + "','" + role + "','" + username + "','" + password + "')");
+        stmt.close();
     }
 }

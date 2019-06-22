@@ -1,14 +1,15 @@
 package io.fulu.couponshop.shop;
 
+import com.mysql.cj.xdevapi.Result;
+import io.fulu.couponshop.coupon.Coupon;
+import io.fulu.couponshop.database.DBConnection;
+
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ShopRepository {
-    private static List<Shop> SHOPS;
-
-    static {
-        SHOPS = generateShops();
-    }
 
     private static List<Shop> generateShops() {
         List<Shop> shops = new ArrayList<>();
@@ -18,25 +19,64 @@ public class ShopRepository {
     }
 
     public synchronized static List<Shop> getShops() {
-        return SHOPS;
-    }
+        List<Shop> shops = new ArrayList<>();
+        try {
+            Connection conn = DBConnection.getConnnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Shops");
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
 
-    public synchronized static Shop getShopById(long id) {
-        for (Shop shop : SHOPS) {
-            if (shop.getId() == id) {
-                return shop;
+                shops.add(new Shop(id, name));
             }
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return null;
+        return shops;
     }
 
-    public synchronized static Shop getShopByName(String name) {
-        for (Shop shop : SHOPS) {
-            if (shop.getName().equals(name)) {
-                return shop;
+    public synchronized static Shop getShopById(int id) {
+        Shop shop = null;
+        try {
+            Connection conn = DBConnection.getConnnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT  * FROM Shops WHERE id = " + id);
+            while (rs.next()) {
+                String name = rs.getString("name");
+                shop = new Shop(id, name);
             }
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return null;
+        return shop;
     }
 
+    public static void addShop(Shop shop) {
+        try {
+            Connection conn = DBConnection.getConnnection();
+            String sql = "INSERT INTO Shops (name) VALUES(?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, shop.getName());
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean deleteShop(int id) {
+        int affectedRows = 0;
+        try {
+            Connection conn = DBConnection.getConnnection();
+            Statement stmt = conn.createStatement();
+            affectedRows = stmt.executeUpdate("DELETE FROM Shops WHERE id = " + id);
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return affectedRows == 1;
+    }
 }

@@ -1,8 +1,8 @@
 package io.fulu.couponshop.shop;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import io.fulu.couponshop.coupon.Coupon;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -20,4 +20,17 @@ public class ShopController {
         return shopService.getShops();
     }
 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public void addShop(Shop shop) {
+        shopService.addCoupon(shop);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public boolean deleteCoupon(@PathParam("id") int id) {
+        return shopService.deleteShop(id);
+    }
 }
