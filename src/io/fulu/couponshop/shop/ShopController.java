@@ -1,6 +1,7 @@
 package io.fulu.couponshop.shop;
 
 import io.fulu.couponshop.coupon.Coupon;
+import io.fulu.couponshop.security.AdminRoleNeeded;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -15,6 +16,7 @@ public class ShopController {
     }
 
     @GET
+    @AdminRoleNeeded
     @Produces(MediaType.APPLICATION_JSON)
     public List<Shop> getShops() {
         return shopService.getShops();

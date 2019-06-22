@@ -68,7 +68,7 @@ public class UserController {
                 .setClaims(claims)
                 .setIssuer("localhost")
                 .setIssuedAt(new Date())
-                .setExpiration(Date.from(LocalDateTime.now().plusMinutes(2L).atZone(ZoneId.systemDefault()).toInstant()))
+                .setExpiration(Date.from(LocalDateTime.now().plusMinutes(15L).atZone(ZoneId.systemDefault()).toInstant()))
                 .signWith(SignatureAlgorithm.HS512, "SECRET")
                 .compact();
         return jwtToken;
