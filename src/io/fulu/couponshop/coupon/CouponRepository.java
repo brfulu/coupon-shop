@@ -98,11 +98,66 @@ public class CouponRepository {
             float originalPrice = rs.getFloat("original_price");
             Date validFrom = rs.getDate("valid_from");
             Date validTo = rs.getDate("valid_to");
+            long version = rs.getLong("version");
 
             ShopEntity shop = ShopRepository.getShopById(shopId);
 
-            coupons.add(new CouponEntity(id, shop, product, discountPrice, originalPrice, validFrom, validTo));
+            coupons.add(new CouponEntity(id, shop, product, discountPrice, originalPrice, validFrom, validTo, version));
         }
         return coupons;
+    }
+
+    public static CouponEntity updateCoupon(int id, CouponEntity updatedCoupon) {
+        CouponEntity coupon = getCouponById(id);
+        coupon.setProduct(updatedCoupon.getProduct());
+        coupon.setShop(updatedCoupon.getShop());
+        coupon.setOriginalPrice(updatedCoupon.getOriginalPrice());
+        coupon.setDiscountPrice(updatedCoupon.getDiscountPrice());
+        coupon.setValidFrom(updatedCoupon.getValidFrom());
+        coupon.setValidTo(updatedCoupon.getValidTo());
+        try {
+            Connection conn = DBConnection.getConnnection();
+            String sql = "UPDATE Coupons SET product=?, shop_id=?, original_price=?, discount_price=?, valid_from=?, " +
+                    "valid_to=?, version=? WHERE id=? and version=?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, coupon.getProduct());
+            stmt.setLong(2, coupon.getShop().getId());
+            stmt.setFloat(3, coupon.getOriginalPrice());
+            stmt.setFloat(4, coupon.getDiscountPrice());
+            stmt.setDate(5, new java.sql.Date(coupon.getValidFrom().getTime()));
+            try {
+                stmt.setDate(6, new java.sql.Date(coupon.getValidTo().getTime()));
+            } catch (Exception e) {
+                stmt.setDate(6, null);
+            }
+            stmt.setLong(7, coupon.getVersion() + 1);
+            stmt.setLong(8, id);
+            stmt.setLong(9, coupon.getVersion());
+
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Updating coupon failed, no rows affected.");
+            }
+            coupon.setVersion(coupon.getVersion() + 1);
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return coupon;
+    }
+
+    private static CouponEntity getCouponById(int id) {
+        CouponEntity coupon = null;
+        try {
+            Connection conn = DBConnection.getConnnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT  * FROM Coupons WHERE id = " + id);
+            coupon = convertToCouponList(rs).get(0);
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return coupon;
     }
 }

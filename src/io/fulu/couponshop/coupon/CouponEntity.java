@@ -13,6 +13,7 @@ public class CouponEntity {
     private float originalPrice;
     private Date validFrom;
     private Date validTo;
+    private long version;
 
     public CouponEntity() {
 
@@ -26,6 +27,26 @@ public class CouponEntity {
         this.originalPrice = originalPrice;
         this.validFrom = validFrom;
         this.validTo = validTo;
+        this.version = 1;
+    }
+
+    public CouponEntity(long id, ShopEntity shop, String product, float discountPrice, float originalPrice, Date validFrom, Date validTo, long version) {
+        this.id = id;
+        this.shop = shop;
+        this.product = product;
+        this.discountPrice = discountPrice;
+        this.originalPrice = originalPrice;
+        this.validFrom = validFrom;
+        this.validTo = validTo;
+        this.version = version;
+    }
+
+    public long getVersion() {
+        return version;
+    }
+
+    public void setVersion(long version) {
+        this.version = version;
     }
 
     public long getId() {

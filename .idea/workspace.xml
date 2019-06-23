@@ -7,11 +7,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bba315ef-63fd-4caa-aafd-6ea1d9a9a8bc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/io/fulu/couponshop/security/AdminRoleNeeded.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/io/fulu/couponshop/security/AdminRoleNeededFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/io/fulu/couponshop/filter/CorsFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/fulu/couponshop/RestApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/fulu/couponshop/RestApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/fulu/couponshop/filters/CorsFilter.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/io/fulu/couponshop/security/JWTTokenNeededFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/fulu/couponshop/security/JWTTokenNeededFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/io/fulu/couponshop/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/fulu/couponshop/user/UserController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,8 +34,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/RestApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-468">
-              <caret line="23" column="128" selection-start-line="23" selection-start-column="128" selection-end-line="23" selection-end-column="128" />
+            <state relative-caret-position="140">
+              <caret line="104" column="62" selection-start-line="104" selection-start-column="62" selection-end-line="104" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -36,65 +44,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/user/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-460">
-              <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/security/AdminRoleNeeded.java">
+        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
-              <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-              <folding>
-                <element signature="e#591#592#0" expanded="true" />
-                <element signature="e#639#640#0" expanded="true" />
-              </folding>
+              <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/security/AdminRoleNeededFilter.java">
+        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/user/UserEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="7" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/security/JWTTokenNeededFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-end-line="20" />
+            <state relative-caret-position="280">
+              <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,10 +65,48 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/security/JWTTokenNeeded.java">
+        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="17" column="59" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="59" />
+              <folding>
+                <element signature="e#545#546#0" expanded="true" />
+                <element signature="e#575#576#0" expanded="true" />
+                <element signature="e#619#620#0" expanded="true" />
+                <element signature="e#657#658#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+              <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1099#1100#0" expanded="true" />
+                <element signature="e#1152#1153#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="67" column="57" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="104" column="32" selection-start-line="104" selection-start-column="32" selection-end-line="104" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,6 +119,34 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
               <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="32" column="153" selection-start-line="32" selection-start-column="153" selection-end-line="32" selection-end-column="153" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#842#843#0" expanded="true" />
+                <element signature="e#872#873#0" expanded="true" />
+                <element signature="e#916#917#0" expanded="true" />
+                <element signature="e#954#955#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/user/UserRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="62" column="95" selection-start-line="62" selection-start-column="95" selection-end-line="62" selection-end-column="95" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -142,6 +170,7 @@
       <find>Coupon</find>
       <find>shop</find>
       <find>invalid</find>
+      <find>shop_id</find>
     </findStrings>
     <replaceStrings>
       <replace>Coupon</replace>
@@ -161,33 +190,34 @@
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/date/CustomDateDeserializer.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/pagination/PageInfo.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/pagination/PaginationResponse.java" />
-        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/filters/CorsFilter.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopMapper.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponMapper.java" />
-        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponEntity.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/user/UserRole.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/user/UserEntity.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/user/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/user/User.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/Coupon.java" />
-        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponService.java" />
-        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopService.java" />
-        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponController.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/shop/Shop.java" />
-        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopEntity.java" />
-        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponRepository.java" />
-        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopRepository.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/user/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/jwt/JWTTokenNeededFilter.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/security/JWTTokenNeeded.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/binder/ApplicationBinder.java" />
-        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/RestApp.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/user/UserService.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/security/AdminRoleNeeded.java" />
-        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/security/JWTTokenNeededFilter.java" />
-        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/user/UserController.java" />
-        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopController.java" />
         <option value="$PROJECT_DIR$/src/io/fulu/couponshop/security/AdminRoleNeededFilter.java" />
+        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/filters/CorsFilter.java" />
+        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/filter/CorsFilter.java" />
+        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/user/UserController.java" />
+        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/security/JWTTokenNeededFilter.java" />
+        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopService.java" />
+        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopController.java" />
+        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponController.java" />
+        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponService.java" />
+        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/RestApp.java" />
+        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponRepository.java" />
+        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponEntity.java" />
+        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopEntity.java" />
+        <option value="$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopRepository.java" />
       </list>
     </option>
   </component>
@@ -209,6 +239,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -240,6 +271,20 @@
               <item name="coupon-shop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="couponshop" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coupon-shop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coupon-shop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="couponshop" type="462c0819:PsiDirectoryNode" />
+              <item name="filter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="coupon-shop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coupon-shop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="couponshop" type="462c0819:PsiDirectoryNode" />
               <item name="security" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -261,19 +306,24 @@
               <item name="coupon-shop" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="coupon-shop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="coupon-shop" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561232694938" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561332212684" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/kupoman" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -387,12 +437,14 @@
       <workItem from="1561131701585" duration="9961000" />
       <workItem from="1561150932139" duration="2233000" />
       <workItem from="1561189363319" duration="8948000" />
-      <workItem from="1561204005283" duration="14149000" />
+      <workItem from="1561204005283" duration="15323000" />
+      <workItem from="1561279528874" duration="1890000" />
+      <workItem from="1561301643231" duration="16379000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35291000" />
+    <option name="totallyTimeSpent" value="54734000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -404,7 +456,7 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Web" order="4" side_tool="true" />
       <window_info id="Designer" order="5" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.23828125" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.23828125" />
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.32921812" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
@@ -416,7 +468,7 @@
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32921812" />
       <window_info anchor="bottom" id="Message" order="8" />
       <window_info anchor="bottom" id="Find" order="9" />
-      <window_info active="true" anchor="bottom" id="Run" order="10" visible="true" weight="0.3580247" />
+      <window_info anchor="bottom" id="Run" order="10" visible="true" weight="0.3580247" />
       <window_info anchor="bottom" id="Debug" order="11" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
@@ -461,16 +513,6 @@
     <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopDto.java" />
     <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponDto.java" />
     <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/user/UserDto.java" />
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/database/DBConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/time/format/DateTimeFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -502,13 +544,6 @@
             <element signature="e#515#516#0" expanded="true" />
             <element signature="e#547#548#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/filters/CorsFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
@@ -556,39 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-          <folding>
-            <element signature="e#287#288#0" expanded="true" />
-            <element signature="e#362#363#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1099#1100#0" expanded="true" />
-            <element signature="e#1152#1153#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="38" column="18" lean-forward="true" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="381">
@@ -612,61 +614,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="49" column="56" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="32" column="95" selection-start-line="32" selection-start-column="95" selection-end-line="32" selection-end-column="95" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="56" column="95" selection-start-line="56" selection-start-column="95" selection-end-line="56" selection-end-column="95" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/user/UserRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-242">
-          <caret line="62" column="95" selection-start-line="62" selection-start-column="95" selection-end-line="62" selection-end-column="95" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/binder/ApplicationBinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="53" lean-forward="true" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
-          <folding>
-            <element signature="e#139#140#0" expanded="true" />
-            <element signature="e#196#197#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/binder/ApplicationBinder.java" />
     <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/user/UserRole.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -674,10 +622,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/RestApp.java">
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/security/AdminRoleNeeded.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-468">
-          <caret line="23" column="128" selection-start-line="23" selection-start-column="128" selection-end-line="23" selection-end-column="128" />
+        <state relative-caret-position="120">
+          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/security/AdminRoleNeededFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/user/UserEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="7" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/jakarta.ws.rs-api-2.1.5-sources.jar!/javax/ws/rs/core/HttpHeaders.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="172" column="61" selection-start-line="172" selection-start-column="48" selection-end-line="172" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/filter/CorsFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="15" column="75" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/database/DBConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -694,6 +680,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/user/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60">
+          <caret line="31" column="19" lean-forward="true" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/security/JWTTokenNeededFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="45" column="32" lean-forward="true" selection-start-line="41" selection-start-column="4" selection-end-line="46" selection-end-column="5" />
+          <folding>
+            <element signature="e#1118#1119#0" expanded="true" />
+            <element signature="e#1183#1184#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1099#1100#0" expanded="true" />
+            <element signature="e#1152#1153#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="67" column="57" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/user/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="62" column="95" selection-start-line="62" selection-start-column="95" selection-end-line="62" selection-end-column="95" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/user/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -704,58 +757,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/security/JWTTokenNeededFilter.java">
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/RestApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-end-line="20" />
+        <state relative-caret-position="140">
+          <caret line="104" column="62" selection-start-line="104" selection-start-column="62" selection-end-line="104" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/user/UserEntity.java">
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="7" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+        <state relative-caret-position="380">
+          <caret line="32" column="153" selection-start-line="32" selection-start-column="153" selection-end-line="32" selection-end-column="153" />
           <folding>
-            <element signature="e#591#592#0" expanded="true" />
-            <element signature="e#639#640#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#842#843#0" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#916#917#0" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/user/UserController.java">
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/coupon/CouponRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-460">
-          <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+        <state relative-caret-position="380">
+          <caret line="104" column="32" selection-start-line="104" selection-start-column="32" selection-end-line="104" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/security/AdminRoleNeeded.java">
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="23" lean-forward="true" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+        <state relative-caret-position="340">
+          <caret line="17" column="59" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="59" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#545#546#0" expanded="true" />
+            <element signature="e#575#576#0" expanded="true" />
+            <element signature="e#619#620#0" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/security/AdminRoleNeededFilter.java">
+    <entry file="file://$PROJECT_DIR$/src/io/fulu/couponshop/shop/ShopRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="35" column="32" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+        <state relative-caret-position="280">
+          <caret line="43" column="53" selection-start-line="43" selection-start-column="53" selection-end-line="43" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

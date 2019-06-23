@@ -3,7 +3,7 @@ package io.fulu.couponshop;
 import io.fulu.couponshop.coupon.Coupon;
 import io.fulu.couponshop.coupon.CouponService;
 import io.fulu.couponshop.database.DBConnection;
-import io.fulu.couponshop.filters.CorsFilter;
+import io.fulu.couponshop.filter.CorsFilter;
 import io.fulu.couponshop.shop.Shop;
 import io.fulu.couponshop.shop.ShopService;
 import io.fulu.couponshop.user.User;
@@ -12,7 +12,6 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 import javax.ws.rs.ApplicationPath;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
@@ -21,8 +20,14 @@ import java.util.Date;
 public class RestApp extends ResourceConfig {
 
     public RestApp() {
-        packages("io.fulu.couponshop.coupon", "io.fulu.couponshop.shop", "io.fulu.couponshop.user", "io.fulu.couponshop.security");
-        register(CorsFilter.class);
+        packages("io.fulu.couponshop.coupon",
+                "io.fulu.couponshop.shop",
+                "io.fulu.couponshop.user",
+                "io.fulu.couponshop.filter",
+                "io.fulu.couponshop.security");
+//        getContainerResponseFilters().add(new CORSFilter());
+
+//        register(CorsFilter.class);
         initDB();
     }
 
@@ -41,12 +46,16 @@ public class RestApp extends ResourceConfig {
             maxi = shopService.addShop(maxi);
             Shop lidl = new Shop("Lidl");
             lidl = shopService.addShop(lidl);
+            Shop shootiranje = new Shop("Shootiranje");
+            shootiranje = shopService.addShop(shootiranje);
 
             CouponService couponService = new CouponService();
             Coupon coupon1 = new Coupon(maxi, "Riza", 105.4f, 230f, new Date(), new Date());
             couponService.addCoupon(coupon1);
             Coupon coupon2 = new Coupon(lidl, "Pile", 234.4f, 350f, new Date(), new Date());
             couponService.addCoupon(coupon2);
+            Coupon coupon3 = new Coupon(shootiranje, "Shot", 150.5f, 254.5f, new Date(), new Date());
+            couponService.addCoupon(coupon3);
 
             UserService userService = new UserService();
             User admin = new User("Branko", "Fulurija", "ADMIN", "fulu", "sifra");
@@ -74,6 +83,7 @@ public class RestApp extends ResourceConfig {
         String sql = "CREATE TABLE Shops"
                 + "  (id              INT AUTO_INCREMENT NOT NULL,"
                 + "   name            VARCHAR(255) NOT NULL,"
+                + "   version         INT default 1 NOT NULL,"
                 + "   PRIMARY KEY (id))";
 
         Statement stmt = conn.createStatement();
@@ -92,6 +102,7 @@ public class RestApp extends ResourceConfig {
                 + "   original_price  FLOAT NOT NULL,"
                 + "   valid_from      DATE NOT NULL,"
                 + "   valid_to        DATE,"
+                + "   version         INT default 1 NOT NULL,"
                 + "   PRIMARY KEY (id),"
                 + "   FOREIGN KEY (shop_id) REFERENCES Shops(id))";
 

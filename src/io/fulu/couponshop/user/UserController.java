@@ -1,5 +1,6 @@
 package io.fulu.couponshop.user;
 
+import io.fulu.couponshop.security.AdminRoleNeeded;
 import io.fulu.couponshop.security.JWTTokenNeeded;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -29,6 +30,7 @@ public class UserController {
 
     @GET
     @JWTTokenNeeded
+    @AdminRoleNeeded
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> getUsers() {
         return userService.getUsers();
@@ -44,13 +46,15 @@ public class UserController {
             // Issue a token for the user
             String token = issueToken(user);
             // Return the token on the response
-            return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
+            return Response.ok().entity(user).header(AUTHORIZATION, "Bearer " + token).build();
         } else {
-            return Response.status(Response.Status.UNAUTHORIZED).build();
+            return Response.status(Response.Status.UNAUTHORIZED).entity(false).build();
         }
     }
 
     @POST
+    @JWTTokenNeeded
+    @AdminRoleNeeded
     @Path("/register")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -62,6 +66,8 @@ public class UserController {
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", user.getRole().toString());
         claims.put("user", user.getUsername());
+        claims.put("firstName", user.getFirstName());
+        claims.put("lastName", user.getLastName());
 
         String jwtToken = Jwts.builder()
                 .setSubject(user.getUsername())

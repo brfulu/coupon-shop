@@ -26,4 +26,9 @@ public class ShopService {
         }
         return ShopRepository.deleteShop(id);
     }
+
+    public Shop updateShop(int id, Shop shop) {
+        ShopEntity shopEntity = ShopRepository.updateShop(id, ShopMapper.mapToEntity(shop));
+        return ShopMapper.mapToModel(shopEntity);
+    }
 }

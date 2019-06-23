@@ -2,6 +2,7 @@ package io.fulu.couponshop.coupon;
 
 
 import io.fulu.couponshop.pagination.PageInfo;
+import io.fulu.couponshop.shop.Shop;
 import io.fulu.couponshop.shop.ShopEntity;
 import io.fulu.couponshop.shop.ShopRepository;
 
@@ -56,5 +57,15 @@ public class CouponService {
 
     public boolean deleteCoupon(long id) {
         return CouponRepository.deleteCoupon(id);
+    }
+
+    public Coupon updateCoupon(int id, Coupon coupon) {
+        CouponEntity couponEntity = CouponMapper.mapToEntity(coupon);
+
+        ShopEntity shopEntity = ShopRepository.getShopById(coupon.getShop().getId());
+        couponEntity.setShop(shopEntity);
+
+        couponEntity = CouponRepository.updateCoupon(id, couponEntity);
+        return CouponMapper.mapToModel(couponEntity);
     }
 }

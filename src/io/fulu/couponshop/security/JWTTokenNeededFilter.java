@@ -25,11 +25,9 @@ public class JWTTokenNeededFilter implements ContainerRequestFilter {
     public void filter(ContainerRequestContext requestContext) throws IOException {
         // Get the HTTP Authorization header from the request
         String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
-        System.out.println("evo meeeeeeeeeeeeeeeee");
         try {
             // Extract the token from the HTTP Authorization header
             String token = authorizationHeader.substring("Bearer".length()).trim();
-            System.out.println("Token: " + token);
             // Validate the token
             Jwts.parser().setSigningKey("SECRET").parseClaimsJws(token);
             System.out.println("#### valid token " + token);

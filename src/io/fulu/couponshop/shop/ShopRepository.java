@@ -41,7 +41,8 @@ public class ShopRepository {
             ResultSet rs = stmt.executeQuery("SELECT  * FROM Shops WHERE id = " + id);
             while (rs.next()) {
                 String name = rs.getString("name");
-                shop = new ShopEntity(id, name);
+                long version = rs.getLong("version");
+                shop = new ShopEntity(id, name, version);
             }
             stmt.close();
         } catch (SQLException e) {
@@ -87,5 +88,31 @@ public class ShopRepository {
             e.printStackTrace();
         }
         return affectedRows == 1;
+    }
+
+    public static ShopEntity updateShop(int id, ShopEntity updatedShop) {
+        ShopEntity shop = getShopById(id);
+        if (updatedShop.getName() != null) {
+            shop.setName(updatedShop.getName());
+        }
+        try {
+            Connection conn = DBConnection.getConnnection();
+            String sql = "UPDATE Shops SET name=?, version=? WHERE id=? and version=?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, shop.getName());
+            stmt.setLong(2, shop.getVersion() + 1);
+            stmt.setLong(3, id);
+            stmt.setLong(4, shop.getVersion());
+
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Updating shop failed, no rows affected.");
+            }
+            shop.setVersion(shop.getVersion() + 1);
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return shop;
     }
 }
