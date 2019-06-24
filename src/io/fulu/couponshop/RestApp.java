@@ -14,6 +14,8 @@ import javax.ws.rs.ApplicationPath;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @ApplicationPath("/api")
@@ -48,14 +50,25 @@ public class RestApp extends ResourceConfig {
             lidl = shopService.addShop(lidl);
             Shop shootiranje = new Shop("Shootiranje");
             shootiranje = shopService.addShop(shootiranje);
+            Shop euromedik = new Shop("Euromedik");
+            euromedik = shopService.addShop(euromedik);
+
+            Date todat = new Date();
 
             CouponService couponService = new CouponService();
-            Coupon coupon1 = new Coupon(maxi, "Riza", 105.4f, 230f, new Date(), new Date());
+            Coupon coupon1 = new Coupon(maxi, "Riza", 105.4f, 230f, new Date(), parseDate("2019-06-26"));
             couponService.addCoupon(coupon1);
-            Coupon coupon2 = new Coupon(lidl, "Pile", 234.4f, 350f, new Date(), new Date());
+            Coupon coupon2 = new Coupon(lidl, "Pile", 234.4f, 350f, parseDate("2019-05-07"), new Date());
             couponService.addCoupon(coupon2);
-            Coupon coupon3 = new Coupon(shootiranje, "Shot", 150.5f, 254.5f, new Date(), new Date());
+            Coupon coupon3 = new Coupon(shootiranje, "Shot", 150.5f, 254.5f, parseDate("2019-06-22"), parseDate("2019-06-25"));
             couponService.addCoupon(coupon3);
+            Coupon coupon4 = new Coupon(euromedik, "Pregled", 1150.5f, 2540.5f, new Date(), null);
+            couponService.addCoupon(coupon4);
+            Coupon coupon5 = new Coupon(maxi, "Milka", 125f, 148f, new Date(), new Date());
+            couponService.addCoupon(coupon5);
+            Coupon coupon6 = new Coupon(euromedik, "Masaza", 800.25f, 900f, parseDate("2019-04-27"), parseDate("2019-05-29"));
+            couponService.addCoupon(coupon6);
+
 
             UserService userService = new UserService();
             User admin = new User("Branko", "Fulurija", "ADMIN", "fulu", "sifra");
@@ -128,35 +141,11 @@ public class RestApp extends ResourceConfig {
         stmt.close();
     }
 
-//    private void addShop(String name) throws SQLException {
-//        Connection conn = DBConnection.getConnnection();
-//        Statement stmt = conn.createStatement();
-//        stmt.execute("INSERT INTO Shops (name) VALUES('" + name + "')");
-//    }
-//
-//    private void addCoupons(int shopId, String product, double discountPrice,
-//                            double originalPrice, Date validFrom, Date validTo) throws SQLException {
-//        Connection conn = DBConnection.getConnnection();
-//        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Coupons"
-//                + " (shop_id, product, discount_price, original_price, valid_from, valid_to) "
-//                + " VALUES(?, ?, ?, ?, ?, ?)");
-//
-//        stmt.setInt(1, shopId);
-//        stmt.setString(2, product);
-//        stmt.setFloat(3, (float) discountPrice);
-//        stmt.setFloat(4, (float) originalPrice);
-//        stmt.setDate(5, new java.sql.Date(validFrom.getTime()));
-//        stmt.setDate(6, new java.sql.Date(validTo.getTime()));
-//
-//        stmt.execute();
-//        stmt.close();
-//    }
-
-//    private void addUsers(String firstName, String lastName, String role, String username, String password) throws SQLException {
-//        Connection conn = DBConnection.getConnnection();
-//        Statement stmt = conn.createStatement();
-//        stmt.execute("INSERT INTO Users (first_name, last_name, role, username, password)"
-//                + " VALUES('" + firstName + "','" + lastName + "','" + role + "','" + username + "','" + password + "')");
-//        stmt.close();
-//    }
+    private static Date parseDate(String date) {
+        try {
+            return new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        } catch (ParseException e) {
+            return null;
+        }
+    }
 }

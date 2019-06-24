@@ -19,7 +19,7 @@ public class Coupon implements Serializable {
 
     }
 
-    public Coupon(Shop shop, String product, float discountPrice, float originalPrice, Date validTo, Date validFrom) {
+    public Coupon(Shop shop, String product, float discountPrice, float originalPrice, Date validFrom, Date validTo) {
         this.shop = shop;
         this.product = product;
         this.discountPrice = discountPrice;
