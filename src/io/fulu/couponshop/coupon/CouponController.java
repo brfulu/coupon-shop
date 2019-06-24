@@ -46,6 +46,7 @@ public class CouponController {
     }
 
     @PUT
+    @JWTTokenNeeded
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Coupon updateCoupon(@PathParam("id") int id, Coupon coupon) {

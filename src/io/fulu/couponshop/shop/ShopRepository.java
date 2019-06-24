@@ -1,5 +1,6 @@
 package io.fulu.couponshop.shop;
 
+import io.fulu.couponshop.database.BasicConnectionPool;
 import io.fulu.couponshop.database.DBConnection;
 
 import java.sql.*;
@@ -17,8 +18,8 @@ public class ShopRepository {
 
     public synchronized static List<ShopEntity> getShops() {
         List<ShopEntity> shops = new ArrayList<>();
+        Connection conn = BasicConnectionPool.getInstance().getConnection();
         try {
-            Connection conn = DBConnection.getConnnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Shops");
             while (rs.next()) {
@@ -29,14 +30,16 @@ public class ShopRepository {
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            BasicConnectionPool.getInstance().releaseConnection(conn);
         }
         return shops;
     }
 
     public synchronized static ShopEntity getShopById(long id) {
         ShopEntity shop = null;
+        Connection conn = BasicConnectionPool.getInstance().getConnection();
         try {
-            Connection conn = DBConnection.getConnnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT  * FROM Shops WHERE id = " + id);
             while (rs.next()) {
@@ -47,13 +50,15 @@ public class ShopRepository {
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            BasicConnectionPool.getInstance().releaseConnection(conn);
         }
         return shop;
     }
 
     public static ShopEntity addShop(ShopEntity shop) {
+        Connection conn = BasicConnectionPool.getInstance().getConnection();
         try {
-            Connection conn = DBConnection.getConnnection();
             String sql = "INSERT INTO Shops (name) VALUES(?)";
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, shop.getName());
@@ -73,19 +78,23 @@ public class ShopRepository {
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            BasicConnectionPool.getInstance().releaseConnection(conn);
         }
         return shop;
     }
 
     public static boolean deleteShop(int id) {
         int affectedRows = 0;
+        Connection conn = BasicConnectionPool.getInstance().getConnection();
         try {
-            Connection conn = DBConnection.getConnnection();
             Statement stmt = conn.createStatement();
             affectedRows = stmt.executeUpdate("DELETE FROM Shops WHERE id = " + id);
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            BasicConnectionPool.getInstance().releaseConnection(conn);
         }
         return affectedRows == 1;
     }
@@ -95,8 +104,8 @@ public class ShopRepository {
         if (updatedShop.getName() != null) {
             shop.setName(updatedShop.getName());
         }
+        Connection conn = BasicConnectionPool.getInstance().getConnection();
         try {
-            Connection conn = DBConnection.getConnnection();
             String sql = "UPDATE Shops SET name=?, version=? WHERE id=? and version=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, shop.getName());
@@ -112,6 +121,8 @@ public class ShopRepository {
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            BasicConnectionPool.getInstance().releaseConnection(conn);
         }
         return shop;
     }

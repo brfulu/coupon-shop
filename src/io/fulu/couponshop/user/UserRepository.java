@@ -1,5 +1,6 @@
 package io.fulu.couponshop.user;
 
+import io.fulu.couponshop.database.BasicConnectionPool;
 import io.fulu.couponshop.database.DBConnection;
 import io.fulu.couponshop.shop.ShopEntity;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -11,8 +12,8 @@ import java.util.List;
 public class UserRepository {
     public static List<UserEntity> getUsers() {
         List<UserEntity> users = new ArrayList<>();
+        Connection conn = BasicConnectionPool.getInstance().getConnection();
         try {
-            Connection conn = DBConnection.getConnnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Users");
             while (rs.next()) {
@@ -28,14 +29,16 @@ public class UserRepository {
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            BasicConnectionPool.getInstance().releaseConnection(conn);
         }
         return users;
     }
 
     public static UserEntity getUserByUsername(String username) {
         UserEntity user = null;
+        Connection conn = BasicConnectionPool.getInstance().getConnection();
         try {
-            Connection conn = DBConnection.getConnnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT  * FROM Users WHERE username = '" + username + "'");
             System.out.println("evo me");
@@ -52,13 +55,15 @@ public class UserRepository {
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            BasicConnectionPool.getInstance().releaseConnection(conn);
         }
         return user;
     }
 
     public static UserEntity addUser(UserEntity user) {
+        Connection conn = BasicConnectionPool.getInstance().getConnection();
         try {
-            Connection conn = DBConnection.getConnnection();
             String sql = "INSERT INTO Users (first_name, last_name, role, username, password) VALUES(?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, user.getFirstName());
@@ -82,6 +87,8 @@ public class UserRepository {
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            BasicConnectionPool.getInstance().releaseConnection(conn);
         }
         return user;
     }

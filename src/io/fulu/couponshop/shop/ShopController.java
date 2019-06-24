@@ -40,6 +40,7 @@ public class ShopController {
     }
 
     @PUT
+    @JWTTokenNeeded
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Shop updateShop(@PathParam("id") int id, Shop shop) {

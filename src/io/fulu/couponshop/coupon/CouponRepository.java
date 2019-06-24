@@ -1,5 +1,6 @@
 package io.fulu.couponshop.coupon;
 
+import io.fulu.couponshop.database.BasicConnectionPool;
 import io.fulu.couponshop.database.DBConnection;
 import io.fulu.couponshop.shop.ShopEntity;
 import io.fulu.couponshop.shop.ShopRepository;
@@ -13,21 +14,23 @@ public class CouponRepository {
 
     public synchronized static List<CouponEntity> getCoupons() {
         List<CouponEntity> coupons = new ArrayList<>();
+        Connection conn = BasicConnectionPool.getInstance().getConnection();
         try {
-            Connection conn = DBConnection.getConnnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Coupons");
             coupons = convertToCouponList(rs);
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            BasicConnectionPool.getInstance().releaseConnection(conn);
         }
         return coupons;
     }
 
     public synchronized static CouponEntity addCoupon(CouponEntity coupon) {
+        Connection conn = BasicConnectionPool.getInstance().getConnection();
         try {
-            Connection conn = DBConnection.getConnnection();
             String sql = "INSERT INTO Coupons (shop_id, product, discount_price, original_price, valid_from, valid_to)"
                     + " VALUES(?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -57,33 +60,39 @@ public class CouponRepository {
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            BasicConnectionPool.getInstance().releaseConnection(conn);
         }
         return coupon;
     }
 
     public static boolean deleteCoupon(long id) {
         int affectedRows = 0;
+        Connection conn = BasicConnectionPool.getInstance().getConnection();
         try {
-            Connection conn = DBConnection.getConnnection();
             Statement stmt = conn.createStatement();
             affectedRows = stmt.executeUpdate("DELETE FROM Coupons WHERE id = " + id);
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            BasicConnectionPool.getInstance().releaseConnection(conn);
         }
         return affectedRows == 1;
     }
 
     public static List<CouponEntity> getCouponsByShopId(int shopId) {
         List<CouponEntity> coupons = new ArrayList<>();
+        Connection conn = BasicConnectionPool.getInstance().getConnection();
         try {
-            Connection conn = DBConnection.getConnnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Coupons WHERE shop_id = " + shopId);
             coupons = convertToCouponList(rs);
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            BasicConnectionPool.getInstance().releaseConnection(conn);
         }
         return coupons;
     }
@@ -115,8 +124,8 @@ public class CouponRepository {
         coupon.setDiscountPrice(updatedCoupon.getDiscountPrice());
         coupon.setValidFrom(updatedCoupon.getValidFrom());
         coupon.setValidTo(updatedCoupon.getValidTo());
+        Connection conn = BasicConnectionPool.getInstance().getConnection();
         try {
-            Connection conn = DBConnection.getConnnection();
             String sql = "UPDATE Coupons SET product=?, shop_id=?, original_price=?, discount_price=?, valid_from=?, " +
                     "valid_to=?, version=? WHERE id=? and version=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -142,21 +151,24 @@ public class CouponRepository {
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            BasicConnectionPool.getInstance().releaseConnection(conn);
         }
         return coupon;
     }
 
     private static CouponEntity getCouponById(int id) {
         CouponEntity coupon = null;
+        Connection conn = BasicConnectionPool.getInstance().getConnection();
         try {
-            Connection conn = DBConnection.getConnnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT  * FROM Coupons WHERE id = " + id);
             coupon = convertToCouponList(rs).get(0);
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
+        } finally {
+            BasicConnectionPool.getInstance().releaseConnection(conn);
         }
         return coupon;
     }
